@@ -1,0 +1,8 @@
+// MAIN Page
+export const SET_STORIES = 'SET_STORIES'
+export const FETCH_TOGGLE = 'FETCH_TOGGLE'
+
+// STORY Page
+export const SET_STORY_INFO = 'GET_STORY_INFO'
+export const ISFETCH_TOGGLE = 'ISFETCH_TOGGLE'
+export const SET_STORY_COMMENTS = 'SET_STORY_COMMENTS'

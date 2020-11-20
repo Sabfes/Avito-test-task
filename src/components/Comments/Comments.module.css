@@ -1,0 +1,22 @@
+.Comments {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.Comments:hover {
+    cursor: pointer;
+}
+.subComment {
+    margin-left: 20px;
+    display: flex;
+}
+.subComment:hover{
+    cursor: pointer;
+}
+.Comments__date {
+    margin-left: 20px;
+}
+.Comments__author {
+    margin-left: 20px;
+}
