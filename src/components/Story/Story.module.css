@@ -1,0 +1,40 @@
+.Story {
+    padding: 20px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid darkgrey;
+    margin-top: 25px;
+    transition: 1s;
+    border-radius: 10px;
+    box-shadow: 6px 6px #cacaca, 12px 12px #aeaeae;
+    background-color: #fff;
+}
+.Story:hover {
+    transform: scale(1.05);
+}
+.Story__title {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 40px;
+}
+.Story__likeCounter{
+    color: lightgrey;
+}
+.Story__time{
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.Story__author {
+    font-size: 24px;
+    color: darkgrey;
+    display: flex;
+    align-items: center;
+}
+
+.Story__desc {
+    display: flex;
+    justify-content: space-between;
+}

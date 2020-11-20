@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment, useEffect} from "react";
+import {Route} from "react-router-dom";
+import MainPage from "./pages/MainPage/MainPage";
+import Header from "./components/Header/Header";
+import StoryPage from "./pages/StoryPage/StoryPage";
+import Loader from "./components/Loader/Loader";
+import {connect} from "react-redux";
+import {getStories} from "./redux/actions/MainPageActions";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+function App(props) {
+    useEffect(()=> {
+        updateNews()
+
+        let timer = setInterval(() => {
+                updateNews()
+            },
+            60000
+        )
+        return ()=> clearInterval(timer)
+    },[])
+
+
+    const updateNews = () => {
+        props.getStories(100)
+    }
+    return (
+        <Fragment>
+            {
+                props.isFetching
+                    ? <Loader />
+                    : <div>
+                        <Header />
+                        <Route path={'/'} exact render={() => <MainPage updateNews={updateNews} />}/>
+                        <Route path={'/story/:id?'} exact component={StoryPage}/>
+                    </div>
+            }
+
+        </Fragment>
+    );
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        isFetching: state.mainPage.isFetching,
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        getStories: number => dispatch(getStories(number))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
